@@ -28,16 +28,16 @@ local function working(co)
 end
 
 skynet.start(function()
-	skynet.fork(working, coroutine.running())
+  skynet.fork(working, coroutine.running())
   watchdog = skynet.uniqueservice("Watchdog")
   pb.register_file "proto/game_c2s.pb"
   pb.register_file "proto/game_s2c.pb"
   skynet.dispatch("lua", function(_, _, fd, pid, msg)
-      f = handler_arr[pid]
-      if f then
-          f(fd, msg)
-      else
-          skynet.error("not found msg hander:"..pid)
-      end
+    f = handler_arr[pid]
+    if f then
+        f(fd, msg)
+    else
+        skynet.error("not found msg hander:"..pid)
+    end
   end)
 end)
