@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package lobby;
+
+ //登陆
+message S2CLogin {
+  optional int32 ret = 1;
+}
+
+message S2CJoinRoom {
+  optional int32 ret = 1;
+  optional int32 room_id = 2;
+}

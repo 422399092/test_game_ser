@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package lobby;
+
+ //登陆100
+message C2SLogin {
+  optional int32 uid = 1;
+}
+
+//进入房间120
+message C2SJoinRoom {
+  optional int32 area_id = 1;// area_server_id
+}
