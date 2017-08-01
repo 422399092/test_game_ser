@@ -20,11 +20,11 @@ function handler.leaveRoom(fd, msg)
 end
 
 local function working(co) 
-	while true do
-		-- print("working..")
-		skynet.sleep(50)
-		skynet.wakeup(co)
-	end
+  while true do
+    -- print("working..")
+    skynet.sleep(50)
+    skynet.wakeup(co)
+  end
 end
 
 skynet.start(function()
