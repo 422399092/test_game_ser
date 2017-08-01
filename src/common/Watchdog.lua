@@ -3,7 +3,7 @@ local socket = require "socket"
 
 local Handler = {}
 local Socket = {
-	handler = nil,
+  handler = nil,
 }
 local Client = {fd=0, ip=""}
 local Clients = {}
