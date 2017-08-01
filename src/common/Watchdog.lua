@@ -69,22 +69,22 @@ function Handler.close(fd)
 end
 
 skynet.start(function()
-	skynet.dispatch("lua", function(session, source, cmd, subcmd, ...)
-		if cmd == "socket" then
-			local f = Socket[subcmd]
-			if f then
-				f(...)
-			else
-				skynet.error("not found subcmd:"..subcmd)
-			end
-		else
-			local f = Handler[cmd]
-			if f then
-				skynet.ret(skynet.pack(f(subcmd, ...)))
-			else
-				skynet.error("not found cmd:"..cmd)
-			end
-		end
-	end)
-	gate = skynet.newservice("gate")
+    skynet.dispatch("lua", function(session, source, cmd, subcmd, ...)
+    	if cmd == "socket" then
+    		local f = Socket[subcmd]
+    		if f then
+    			f(...)
+    		else
+    			skynet.error("not found subcmd:"..subcmd)
+    		end
+    	else
+    		local f = Handler[cmd]
+    		if f then
+    			skynet.ret(skynet.pack(f(subcmd, ...)))
+    		else
+    			skynet.error("not found cmd:"..cmd)
+    		end
+    	end
+    end)
+    gate = skynet.newservice("gate")
 end)
