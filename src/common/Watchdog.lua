@@ -26,7 +26,7 @@ end
 
 function Socket.open(fd, addr)
 	skynet.error("new client from : " .. addr)
-	local client = Client 
+	local client = Client
 	client.fd = fd
 	client.ip = addr
 	Clients[fd] = client
