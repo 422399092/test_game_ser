@@ -7,13 +7,13 @@ local rpc
 local httpServer
 
 local function init()
-	httpServer = skynet.uniqueservice("HttpServer")
-	httpHandler = skynet.uniqueservice("HttpHandler")
-	rpc = skynet.uniqueservice("RpcHandler")
-	msgHandler = skynet.uniqueservice("MsgHandler")
-	watchdog = skynet.uniqueservice("Watchdog")
-	skynet.send(rpc, "lua", "init")
-	skynet.send(httpServer, "lua", "init", httpHandler, 10)
+  httpServer = skynet.uniqueservice("HttpServer")
+  httpHandler = skynet.uniqueservice("HttpHandler")
+  rpc = skynet.uniqueservice("RpcHandler")
+  msgHandler = skynet.uniqueservice("MsgHandler")
+  watchdog = skynet.uniqueservice("Watchdog")
+  skynet.send(rpc, "lua", "init")
+  skynet.send(httpServer, "lua", "init", httpHandler, 10)
   skynet.send(watchdog, "lua", "socket", "regHandler", msgHandler)
   skynet.send(watchdog, "lua", "start", {
       port = 2525,
